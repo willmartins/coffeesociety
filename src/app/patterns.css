@@ -1,0 +1,181 @@
+/*
+  Pattern layers copied from the live Elementor CSS.
+  Each graphic sits on a pseudo-element over a solid background-colour,
+  matching the kit containers (home post-645, course type post-340,
+  training single post-1987).
+*/
+
+:root {
+  --cs-navy: #004272;
+  --cs-dark-blue: #1c3567;
+  --cs-aqua: #00a6c2;
+  --cs-pink: #ffa7b2;
+  --cs-hot-pink: #fd26dc;
+  --cs-cream: #efe9dc;
+  --cs-text: #051521;
+}
+
+/* spoons-pattern.svg: full-bleed spoon tile over the page cream. */
+body {
+  background-color: var(--cs-cream);
+  background-image: url("/assets/patterns/spoons-pattern.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+/* Shared overlay box. Elementor paints the graphic on ::before. */
+.pattern-overlay {
+  position: relative;
+  isolation: isolate;
+}
+
+.pattern-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pattern-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Home hero and course-type hero. Desktop slash, mobile variant below 768. */
+.pattern-slash {
+  background-color: var(--cs-dark-blue);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.pattern-slash::before {
+  background-image: url("/assets/patterns/Slash-Texture-Left.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Training single hero uses the same slash, sized like post-1987. */
+.pattern-slash--training::before {
+  background-position: top left;
+  background-size: 90% auto;
+}
+
+@media (max-width: 767px) {
+  .pattern-slash::before,
+  .pattern-slash--training::before {
+    background-image: url("/assets/patterns/mobileSlash-Texture-Left.png");
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+/* Home hero photograph, with the slash layered on top (post-645). */
+.pattern-slash--home {
+  min-height: 80vh;
+  background-color: #051521;
+  background-image: url("https://coffee-society.co.uk/wp-content/uploads/2026/02/Final-background-header-scaled-e1770980497767.jpeg");
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (max-width: 1024px) {
+  .pattern-slash--home {
+    background-position: 74% 65px;
+  }
+}
+
+@media (max-width: 767px) {
+  .pattern-slash--home {
+    min-height: 55vh;
+    background-position: 75% 73px;
+  }
+}
+
+/* Featured collections: pink field, spoonbackground.svg on top (post-645). */
+.pattern-spoonbackground {
+  background-color: var(--cs-pink);
+}
+
+.pattern-spoonbackground::before {
+  background-image: url("/assets/patterns/spoonbackground.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain;
+}
+
+@media (min-width: 1025px) {
+  .pattern-spoonbackground::before {
+    background-attachment: fixed;
+  }
+}
+
+/* Course-type listing: aqua field, cupbackground.svg repeated on the Y axis (post-340). */
+.pattern-cups {
+  background-color: var(--cs-aqua);
+}
+
+.pattern-cups::before {
+  background-image: url("/assets/patterns/cupbackground.svg");
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-size: cover;
+}
+
+/*
+  Grain overlay from Elementor kit CSS (post-6.css), class .coffee-bg-treated.
+  The filter grades the container. ::after lays fractal-noise grain on top.
+*/
+.coffee-bg-treated {
+  position: relative;
+  overflow: hidden;
+  filter: contrast(1.3) saturate(1.3) sepia(0.18) hue-rotate(-8deg) brightness(1.05);
+}
+
+.coffee-bg-treated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: soft-light;
+  opacity: 0.5;
+}
+
+.filter-avoid {
+  position: relative;
+  z-index: 5;
+  filter: contrast(0.77) saturate(0.77) sepia(0) hue-rotate(8deg) brightness(0.95);
+}
+
+.coffee-treated img {
+  display: block;
+  width: 100%;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: contrast(1.3) saturate(1.3) sepia(0.18) hue-rotate(-8deg) brightness(1.05);
+}
+
+.coffee-treated figure {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.coffee-treated figure::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  mix-blend-mode: soft-light;
+  opacity: 0.25;
+}
