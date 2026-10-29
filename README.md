@@ -31,7 +31,7 @@ Set the same public variables and the read token and revalidate secret on the Ve
 SANITY_API_WRITE_TOKEN=... pnpm seed:import
 ```
 
-The script reads `sanity/seed/seed.ndjson`, uploads any image that already lives under `public/`, and creates or replaces documents. Video files are not included. `beforeVideoUrl` and `afterVideoUrl` are empty.
+The script reads `sanity/seed/seed.ndjson`, uploads any image that already lives under `public/`, then writes every document with `createOrReplace` in one transaction so references can point at documents in the same import. Running it again replaces the same ids. Video files are not included. `beforeVideoUrl` and `afterVideoUrl` are empty.
 
 ## Content updates
 

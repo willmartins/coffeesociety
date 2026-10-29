@@ -2,9 +2,10 @@
 
 | Name | Component file | Sanity schema type | Where it is used | Description |
 | --- | --- | --- | --- | --- |
-| Site header | `src/components/SiteHeader.tsx` | `navigation` | Every page | Logo, mega menu and portal login link. |
-| Site footer | `src/components/SiteFooter.tsx` | `footer` | Every page | Badge, quick links, compliance links and legal line. |
-| Cookie notice | `src/components/CookieNotice.tsx` | `siteSettings` | Every page | Cookie banner with the live notice copy. |
+| Site shell | `src/app/(site)/layout.tsx` | `siteSettings`, `navigation`, `footer` | Site pages, not `/studio` | Header, footer and cookie notice for the public site. |
+| Site header | `src/components/SiteHeader.tsx` | `navigation` | Site pages, not `/studio` | Logo, mega menu and portal login link. |
+| Site footer | `src/components/SiteFooter.tsx` | `footer` | Site pages, not `/studio` | Badge, quick links, compliance links and legal line. |
+| Cookie notice | `src/components/CookieNotice.tsx` | `siteSettings` | Site pages, not `/studio` | Cookie banner with the live notice copy. |
 | Hero banner | `src/components/HeroBanner.tsx` | `homePage` | Home | Caring about coffee hero with the slash texture. |
 | Join society | `src/components/JoinSociety.tsx` | `homePage` | Home | Navy mailing-list band and latte image. |
 | Featured collections | `src/components/FeaturedCollections.tsx` | `homePage` | Home | Pink band, spoon graphic, two collection cards. |

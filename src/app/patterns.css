@@ -16,12 +16,13 @@
 }
 
 /* spoons-pattern.svg: full-bleed spoon tile over the page cream. */
-body {
+.site-shell {
   background-color: var(--cs-cream);
   background-image: url("/assets/patterns/spoons-pattern.svg");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+  min-height: 100vh;
 }
 
 /* Shared overlay box. Elementor paints the graphic on ::before. */

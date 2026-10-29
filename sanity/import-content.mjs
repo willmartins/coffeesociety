@@ -28,6 +28,7 @@ function localFile(url) {
   return existsSync(absolute) ? absolute : null;
 }
 
+const documents = [];
 for (const line of lines) {
   const doc = JSON.parse(line);
   if (doc.imageUrl) {
@@ -39,8 +40,13 @@ for (const line of lines) {
       doc.imageUrl = asset.url;
     }
   }
-  await client.createOrReplace(doc);
-  console.info("Wrote", doc._id);
+  documents.push(doc);
 }
 
-console.info(`Imported ${lines.length} documents into ${projectId}/${dataset}.`);
+const transaction = client.transaction();
+for (const doc of documents) {
+  transaction.createOrReplace(doc);
+}
+await transaction.commit();
+
+console.info(`Imported ${documents.length} documents into ${projectId}/${dataset} in one transaction.`);
