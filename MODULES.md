@@ -17,7 +17,8 @@
 | Short single | `src/components/ShortSingle.tsx` | `video` | `/shorts/[slug]` | Short page with an empty player. |
 | Training programme | `src/components/TrainingProgramme.tsx` | `trainingOption` | `/training/[slug]` | In-person course detail. |
 | Team hub | `src/components/TeamHub.tsx` | `page` | `/lavazza-team` | Lavazza team picker. |
-| Portal login | `src/components/PortalLogin.tsx` | `form` | `/customer-portal`, `/portal` | Static login. It does not authenticate. |
+| Portal login | `src/components/PortalLogin.tsx` | `form` | `/customer-portal` | Static login. It does not authenticate. |
+| Portal hub | `src/components/PortalHub.tsx` | `video` | `/portal` | Logged-in hub with the live “Fallback” heading and video rows. |
 | Rich page | `src/components/RichPage.tsx` | `page` | Terms, cookies, challenge | Heading and paragraph pages. |
 | Comment form | `src/components/CommentForm.tsx` | `form` | `/hello-world` | WordPress comment fields, logged and not stored. |
 | Trainers | `src/components/Trainers.tsx` | `homePage` | Archives and course pages | Dave, Mia, Christian and Teela. |

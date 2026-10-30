@@ -1,15 +1,17 @@
-import { PortalLogin } from "@/components/PortalLogin";
+import { PortalHub } from "@/components/PortalHub";
 import { pageMeta } from "@/lib/meta";
-import { getSeed } from "@/sanity/load";
+import { getVideos } from "@/sanity/load";
 
-const login = getSeed().forms.login;
+export const metadata = pageMeta(
+  "Portal - Coffee Society by Lavazza",
+  "Your home for all things coffee training and Lavazza.",
+);
 
-export const metadata = pageMeta("Customer Portal - Coffee Society by Lavazza", login.intro);
-
-export default function PortalPage() {
+export default async function PortalPage() {
+  const videos = await getVideos();
   return (
     <main>
-      <PortalLogin title={login.title} intro={login.intro} redirectTo={login.redirectTo} />
+      <PortalHub videos={videos} />
     </main>
   );
 }

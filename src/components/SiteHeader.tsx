@@ -51,7 +51,10 @@ export function SiteHeader({
         aria-controls="mobile-menu"
         onClick={() => setOpen((value) => !value)}
       >
-        Menu
+        <span />
+        <span />
+        <span />
+        <span className="visually-hidden">Menu</span>
       </button>
       <div id="mobile-menu" className={open ? "mobile-panel open" : "mobile-panel"}>
         {items.map((item) => (

@@ -15,8 +15,8 @@ export default async function ShortsArchivePage() {
       <ArchiveListing
         title={foundation?.title}
         description={foundation?.description}
-        emptyVideos
-        emptyCourses
+        videoEmpties={2}
+        courseEmpties={2}
         trainers={trainers}
       />
     </main>

@@ -42,13 +42,15 @@ export default async function TopicPage({
         videos={categoryVideos.map((video) => ({
           title: video.title,
           href: `/video/${video.slug}/`,
+          imageUrl: video.imageUrl,
         }))}
         shorts={
           slug === "barista-foundation-course"
-            ? shorts.map((short) => ({ title: short.title, href: `/shorts/${short.slug}/` }))
+            ? shorts.map((short) => ({ title: short.title, href: `/shorts/${short.slug}/`, imageUrl: short.imageUrl }))
             : []
         }
-        emptyCourses
+        videoEmpties={1}
+        courseEmpties={2}
         trainers={trainers}
       />
     </main>

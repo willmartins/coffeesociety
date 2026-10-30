@@ -5,32 +5,33 @@ export function FeaturedCollections({
   title: string;
   collections: { label: string; href: string; imageUrl: string }[];
 }) {
+  const chips = ["chip chip--lg chip--navy chip--hot rot-2", "chip chip--lg chip--beige chip--hot rot--3"];
   return (
-    <section className="pattern-overlay pattern-spoonbackground px-5 pb-20 pt-10">
-      <h2 className="m-0 max-w-[1400px] font-[hoss-sharp,sans-serif] text-[40px] font-bold uppercase leading-[0.9] tracking-[-1.5px] text-[#051521] md:text-[63px] md:tracking-[-4px] xl:text-[90px] xl:tracking-[-5px]">
-        {title.includes(" ") ? (
-          <>
-            {title.split(" ")[0]}
-            <br />
-            {title.split(" ").slice(1).join(" ")}
-          </>
-        ) : (
-          title
-        )}
-      </h2>
-      <div className="mx-auto mt-8 grid max-w-[1400px] gap-5 md:grid-cols-2">
-        {collections.map((card) => (
-          <a
-            key={card.href}
-            href={card.href}
-            className="coffee-bg-treated flex min-h-[360px] items-end justify-center bg-cover bg-center p-6 no-underline"
-            style={{ backgroundImage: `linear-gradient(180deg, #00000030 0%, #000000 100%), url(${card.imageUrl})` }}
-          >
-            <span className="filter-avoid font-[hoss-sharp,sans-serif] text-[18px] font-bold uppercase text-white">
-              {card.label}
-            </span>
-          </a>
-        ))}
+    <section className="pattern-overlay pattern-spoonbackground featured">
+      <div className="wrap">
+        <h2 className="display">
+          {title.includes(" ") ? (
+            <>
+              {title.split(" ")[0]}
+              <br />
+              {title.split(" ").slice(1).join(" ")}
+            </>
+          ) : (
+            title
+          )}
+        </h2>
+        <div className="feature-grid">
+          {collections.map((card, index) => (
+            <a
+              key={card.href}
+              href={card.href}
+              className={`feature-card coffee-bg-treated ${index === 0 ? "feature-card--centre" : "feature-card--start"}`}
+              style={{ backgroundImage: `url(${card.imageUrl})` }}
+            >
+              <span className={`${chips[index] ?? chips[0]} filter-avoid`}>{card.label}</span>
+            </a>
+          ))}
+        </div>
       </div>
     </section>
   );

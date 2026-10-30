@@ -1,87 +1,107 @@
 import type { Trainer } from "@/content/types";
+import { oliveBadge, pinkCup } from "@/content/live-media";
 import { Trainers } from "./Trainers";
 
-type Item = { title: string; href: string };
+type Item = { title: string; href: string; imageUrl?: string };
 
 export function ArchiveListing({
   title,
   description,
   videos,
   shorts,
-  courses,
+  videoEmpties = 0,
+  courseEmpties = 0,
   trainers,
-  emptyVideos = false,
-  emptyCourses = false,
 }: {
   title?: string;
   description?: string;
   videos?: Item[];
   shorts?: Item[];
-  courses?: Item[];
+  videoEmpties?: number;
+  courseEmpties?: number;
   trainers: Trainer[];
-  emptyVideos?: boolean;
-  emptyCourses?: boolean;
 }) {
   return (
-    <div className="pt-28">
+    <div>
       {title ? (
-        <header className="pattern-overlay pattern-slash px-5 py-16 text-white">
-          <div className="mx-auto max-w-[1400px]">
-            <h1 className="m-0 font-[hoss-sharp,sans-serif] text-[40px] font-bold uppercase leading-[0.9] md:text-[60px]">
-              {title}
-            </h1>
-            {description ? <p className="max-w-[70ch]">{description}</p> : null}
+        <header className="pattern-overlay pattern-slash page-hero">
+          <div className="page-hero-row wrap">
+            <h1>{title}</h1>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={oliveBadge} alt="" className="hero-badge" />
           </div>
         </header>
       ) : (
-        <div className="h-8" />
+        <div className="pattern-overlay pattern-slash" style={{ minHeight: "40vh" }} />
       )}
-      <div className="mx-auto grid max-w-[1400px] gap-10 px-5 py-10">
-        {(videos || emptyVideos) && (
-          <section>
-            <h2>Videos</h2>
+      {description ? (
+        <section className="intro-band">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={pinkCup} alt="" />
+          <p>{description}</p>
+        </section>
+      ) : null}
+      {videoEmpties > 0 || (videos && videos.length > 0) ? (
+        <section className="pink-band">
+          <div className="wrap">
+            <h3>Videos</h3>
+            {Array.from({ length: videoEmpties }).map((_, index) => (
+              <p className="empty" key={`video-empty-${index}`}>
+                No data was found
+              </p>
+            ))}
             {videos && videos.length > 0 ? (
-              <ul className="archive-list">
+              <div className="card-grid card-grid--3">
                 {videos.map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href}>{item.title}</a>
-                  </li>
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="vid-card coffee-bg-treated"
+                    style={item.imageUrl ? { backgroundImage: `url(${item.imageUrl})` } : undefined}
+                  >
+                    <span className="chip chip--title filter-avoid">
+                      <span>{item.title}</span>
+                    </span>
+                  </a>
                 ))}
-              </ul>
-            ) : (
-              <p className="empty">No data was found</p>
-            )}
-          </section>
-        )}
-        {shorts && shorts.length > 0 ? (
-          <section>
-            <h2>Shorts</h2>
-            <ul className="archive-list">
+              </div>
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+      {shorts && shorts.length > 0 ? (
+        <section className="pink-band">
+          <div className="wrap">
+            <h3>Shorts</h3>
+            <p className="empty">No data was found</p>
+            <ul className="shorts-grid">
               {shorts.map((item) => (
                 <li key={item.href}>
-                  <a href={item.href}>{item.title}</a>
+                  <a
+                    href={item.href}
+                    className="short-card coffee-bg-treated"
+                    style={item.imageUrl ? { backgroundImage: `url(${item.imageUrl})` } : undefined}
+                  >
+                    <span className="chip chip--md chip--olive chip--cream rot-2 filter-avoid">{item.title}</span>
+                  </a>
                 </li>
               ))}
             </ul>
-          </section>
-        ) : null}
-        {(courses || emptyCourses) && (
-          <section>
-            <h2>Courses</h2>
-            {courses && courses.length > 0 ? (
-              <ul className="archive-list">
-                {courses.map((item) => (
-                  <li key={item.href}>
-                    <a href={item.href}>{item.title}</a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="empty">No data was found</p>
-            )}
-          </section>
-        )}
-      </div>
+          </div>
+        </section>
+      ) : null}
+      {courseEmpties > 0 ? (
+        <section className="pink-band">
+          <div className="wrap">
+            <h3>Courses</h3>
+            {Array.from({ length: courseEmpties }).map((_, index) => (
+              <p className="empty" key={`course-empty-${index}`}>
+                No data was found
+              </p>
+            ))}
+          </div>
+        </section>
+      ) : null}
       <Trainers trainers={trainers} />
     </div>
   );

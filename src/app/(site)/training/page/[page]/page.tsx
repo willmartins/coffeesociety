@@ -15,7 +15,7 @@ export default async function TrainingArchivePaged() {
   const trainers = await getTrainers();
   return (
     <main>
-      <ArchiveListing emptyVideos emptyCourses trainers={trainers} />
+      <ArchiveListing videoEmpties={2} courseEmpties={2} trainers={trainers} />
     </main>
   );
 }
