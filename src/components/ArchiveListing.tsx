@@ -32,7 +32,10 @@ export function ArchiveListing({
           </div>
         </header>
       ) : (
-        <div className="pattern-overlay pattern-slash" style={{ minHeight: "40vh" }} />
+        <header className="archive-mark">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={oliveBadge} alt="" />
+        </header>
       )}
       {description ? (
         <section className="intro-band">

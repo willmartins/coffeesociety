@@ -24,7 +24,9 @@ export function TrainingProgramme({
       </header>
       <div className="section-pad wrap">
         {course.imageUrl ? (
-          <MediaFrame src={course.imageUrl} alt="" width={1024} height={700} />
+          <div className="train-photo">
+            <MediaFrame src={course.imageUrl} alt="" width={1024} height={700} />
+          </div>
         ) : null}
         <section>
           <h2 className="mid">Course Information</h2>

@@ -8,7 +8,7 @@ export const metadata = pageMeta(
 );
 
 export function generateStaticParams() {
-  return [{ page: "2" }];
+  return [{ page: "2" }, { page: "3" }];
 }
 
 export default async function VideoArchivePaged() {

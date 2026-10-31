@@ -47,12 +47,14 @@ a { color: inherit; }
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  background: transparent;
+  background: #fff;
   border: 0;
   color: #00a6c2;
   cursor: pointer;
-  padding: 10px 20px 10px 27px;
+  padding: 12px 22px;
   letter-spacing: 0;
+  border-radius: 40px;
+  line-height: 1;
 }
 
 .menu-item > button:hover,
@@ -61,11 +63,11 @@ a { color: inherit; }
 .portal-link {
   background: #1c3567;
   color: #fff;
-  border-radius: 40px;
+  border-radius: 43px;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  padding: 10px 20px;
+  padding: 12px 22px;
 }
 
 .dropdown {
@@ -440,14 +442,59 @@ img.coffee-treated {
 .shorts-band { padding: 70px 0 80px; }
 .shorts-band h2 { color: #1c3567; padding: 0; }
 
+.shorts-slider {
+  position: relative;
+  overflow: hidden;
+  margin-top: 16px;
+}
+
 .shorts-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  display: flex;
   gap: 10px;
   list-style: none;
-  margin: 16px 0 0;
+  margin: 0;
   padding: 0;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
 }
+
+.shorts-grid > li { scroll-snap-align: start; }
+
+.shorts-grid > li { flex: 0 0 calc(25% - 8px); }
+
+.shorts-arrow {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 0;
+  background: #1c3567;
+  color: #fff;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.shorts-arrow--prev { right: auto; left: 0; }
+
+.shorts-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.shorts-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d9d2c4;
+}
+
+.shorts-dots .is-on { background: #1c3567; }
 
 .short-card {
   min-height: 450px;
@@ -524,19 +571,19 @@ img.coffee-treated {
   min-height: 720px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
   position: relative;
   color: #1c3567;
-  padding: 0 20px;
+  padding: 0 6vw;
 }
 
-.closing-banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("https://coffee-society.co.uk/wp-content/uploads/2025/11/CS-Stamp-Offset.png") center / 58% auto no-repeat;
-  opacity: 0.5;
-  mix-blend-mode: overlay;
-  pointer-events: none;
+.closing-banner img.stamp {
+  width: 58%;
+  max-width: 640px;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.85;
 }
 
 .closing-banner h2 {
@@ -557,6 +604,18 @@ img.coffee-treated {
   font-weight: 600;
   text-transform: uppercase;
   color: #00a6c2;
+}
+
+.archive-mark {
+  min-height: 42vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 8vw 20px;
+}
+
+.archive-mark img {
+  width: min(280px, 40vw);
+  height: auto;
 }
 
 .page-hero {
@@ -845,12 +904,18 @@ img.coffee-treated {
 
 .player {
   aspect-ratio: 16 / 9;
-  background: #051521;
+  background: #051521 center / cover no-repeat;
   display: grid;
   place-items: center;
   color: #efe9dc;
   border-radius: 20px;
   overflow: hidden;
+  width: 100%;
+}
+
+.player--compact {
+  width: min(460px, 48vw);
+  border-radius: 12px;
 }
 
 .player span {
@@ -877,13 +942,23 @@ img.coffee-treated {
 }
 
 .short-page {
-  padding: 125px 30px 60px;
+  padding: 125px 30px 48px;
+}
+
+.short-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  min-height: 200px;
 }
 
 .short-frame {
-  border-radius: 50px;
   transform: rotate(2deg);
-  padding: 12px 0 24px;
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  max-width: 640px;
 }
 
 .archive-list { display: grid; gap: 12px; padding: 0; list-style: none; }
@@ -988,13 +1063,41 @@ img.coffee-treated {
   margin: 12px 0;
 }
 .train-hero {
-  min-height: 90vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
   color: #fff;
-  padding: 80px 6vw;
+  padding: 100px 6vw 40px;
+}
+
+.topic-list {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.topic-list li {
+  background: #00a6c2;
+  color: #fff;
+  display: inline-block;
+  padding: 12px 16px;
+  font-family: "hoss-sharp", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+.train-photo img {
+  width: 75%;
+  max-width: 640px;
+  height: 360px;
+  object-fit: cover;
+  border: 10px solid #627c2f;
+  border-radius: 9px;
+  transform: rotate(-4deg);
 }
 .train-hero h1 { color: #efe9dc; }
 .section-pad { padding: 40px 6vw 64px; }
@@ -1025,7 +1128,7 @@ img.coffee-treated {
   .featured { padding: 40px 20px 80px; }
   .feature-card { width: 48%; padding: 24px; }
   .shorts-band h2 { padding: 0 20px; }
-  .shorts-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .shorts-grid > li { flex-basis: calc(33.33% - 8px); }
   .closing-banner h2 { font-size: 175px; line-height: 0.8em; }
   .page-hero h1 { font-size: 95px; letter-spacing: -4px; }
   .intro-band { min-height: 55vh; gap: 50px; }
@@ -1072,9 +1175,10 @@ img.coffee-treated {
   .feature-card { width: 100%; }
   .shorts-band { padding: 70px 0 30px; }
   .shorts-band h2 { padding: 0 16px; }
-  .shorts-grid, .card-grid--2, .card-grid--3, .card-grid--4, .trainer-grid, .team-grid {
+  .card-grid--2, .card-grid--3, .card-grid--4, .trainer-grid, .team-grid {
     grid-template-columns: 1fr;
   }
+  .shorts-grid > li { flex-basis: 100%; }
   .short-card { min-height: 400px; }
   .closing-banner {
     min-height: 690px;

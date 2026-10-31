@@ -48,6 +48,35 @@ Videos stay empty. Copy is taken from the live pages. Design-audit “improvemen
 - **Header mega menu.** Labels, colour, type and panel size match. The live menu is an Elementor mega menu with icon rows and a lift on hover. The replica uses a dropdown.
 - **Some trainer photographs** returned 403 to headless Chrome in this environment (`lavazzateam.jpg`). The URLs match the live page and respond 200 to a normal fetch.
 
+## Round log
+
+Pixel diffs use pixelmatch at threshold 0.2 on full-page screenshots scaled to 480px wide, with the shorter page padded in white. Side-by-side images are in the fidelity artifacts folder. Live pages are loaded through a fetch that uses a non-browser user agent, because headless Chrome is challenged by the host. A failed remote image therefore shows up as a difference even when the markup matches.
+
+### Round 1
+
+Baseline on commit `d66dafd`, before this round’s fixes. 1440px and 1024px covered all 82 crawled pages. 768px was cut off when the capture process stopped (18 pages). 390px was not captured in this pass.
+
+| Width | Pages measured | Mean diff | Median |
+| --- | --- | --- | --- |
+| 1440 | 82 | 51.49% | 51.57% |
+| 1024 | 82 | 60.50% | 61.07% |
+| 768 | 18 | 51.77% | 54.56% |
+
+Worst at 1440px: short lessons about 76% (the replica page was a tall stack; the live page is one short row), training archive 72% (a dark slash block the live page does not open with), video lessons about 55–59%. Best: cookie policy 20%, Lavazza team 22%, hello world 27%, home 36%.
+
+What differed, from the side-by-side images and the live DOM:
+
+- Menu titles are white pills (radius 40px, aqua type). The portal control is a navy pill, radius 43px.
+- Short lessons put the aqua title and the pink “society shorts” chip beside a small player, then the footer.
+- Home shorts are a horizontal slider with arrows and dots, not a static grid.
+- The closing stamp sits to the right of the words, as its own image.
+- The training archive opens with the olive badge and a navy band with the pink cup, not a full slash hero.
+- Video players were an empty navy frame. The live player is a Presto/Vimeo frame. Posters in the HTML are empty, so the replica now fills the same 16:9 frame with that lesson’s live thumbnail.
+
+Fixed in this round: those header pills, the short-lesson row, the shorts slider, the stamp, the training-archive top, thumbnail-filled players, the seven `/lavazza-team/courses/` lessons with copy taken from the live pages, and `/video/page/3/`.
+
+After percentages are the round 2 capture.
+
 ## Checks
 
-`pnpm typecheck`, `pnpm lint` and `pnpm build` were run on this branch.
+`pnpm typecheck` and `pnpm lint` are run on each round. `pnpm build` is run before the last push.
