@@ -9,7 +9,7 @@ export function ShortSingle({ short }: { short: ShortDoc }) {
           <h1 className="chip chip--lg chip--aqua chip--white">{short.title}</h1>
           <p className="chip chip--sm chip--pink chip--ink rot--2">{short.kicker}</p>
         </div>
-        <VideoPlaceholder label={`${short.title} short`} imageUrl={short.imageUrl} compact />
+        <VideoPlaceholder label={`${short.title} short`} imageUrl={`/assets/placeholders/short-${short.slug}.jpg`} compact />
       </div>
     </article>
   );

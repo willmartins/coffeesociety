@@ -14,13 +14,24 @@ export function ShortsGrid({
 }) {
   const scroller = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
+  const liveOrder = [
+    "why-doesnt-my-coffee-have-crema",
+    "why-does-my-espresso-taste-dirty",
+    "why-does-my-coffee-only-come-out-of-one-side-of-the-portafilter",
+    "why-is-my-coffee-puck-watery",
+    "why-does-my-shot-run-slow-and-taste-bitter",
+    "why-is-my-shot-running-fast-and-taste-sour",
+  ];
+  const ordered = [...shorts].sort(
+    (a, b) => liveOrder.indexOf(a.slug) - liveOrder.indexOf(b.slug),
+  );
   const shift = (dir: number) => {
     const node = scroller.current;
     if (!node) return;
     const card = node.querySelector("li");
     const width = card ? card.getBoundingClientRect().width + 10 : node.clientWidth;
     node.scrollBy({ left: width * dir, behavior: "smooth" });
-    setIndex((value) => Math.min(shorts.length - 1, Math.max(0, value + dir)));
+    setIndex((value) => Math.min(ordered.length - 1, Math.max(0, value + dir)));
   };
 
   return (
@@ -33,7 +44,7 @@ export function ShortsGrid({
         </h2>
         <div className="shorts-slider">
           <ul className="shorts-grid" ref={scroller}>
-            {shorts.map((short) => (
+            {ordered.map((short) => (
               <li key={short.slug}>
                 <a
                   href={`/shorts/${short.slug}/`}
@@ -53,7 +64,7 @@ export function ShortsGrid({
           </button>
         </div>
         <div className="shorts-dots" aria-hidden="true">
-          {shorts.map((short, dot) => (
+          {ordered.map((short, dot) => (
             <span key={short.slug} className={dot === index ? "is-on" : ""} />
           ))}
         </div>

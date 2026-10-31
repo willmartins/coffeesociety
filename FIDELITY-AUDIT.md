@@ -138,6 +138,46 @@ The hero badge, heading and featured card now share the live page’s measured b
 | 768 | 53.04% | 53.04% |
 | 390 | 57.95% | 57.98% |
 
+### Round 5
+
+Player frames were captured from the live Presto player and stored in `public/assets/placeholders/`. Video lessons put that still on the left and the aqua title on the right. Course “Learn more” is navy. Team lessons use a navy spoon hero and a pink information band. Menu pills gained the live chevron.
+
+| Width | Round 4 | Round 5 |
+| --- | --- | --- |
+| 1440 | 45.77% | 43.92% |
+| 1024 | 54.61% | 55.58% |
+| 768 | 53.04% | 53.71% |
+| 390 | 57.98% | 56.54% |
+
+At 1440px, video lessons moved from 46.7% to 43.0% (the player band on Pouring & Latte Art from 67% to 47%). Team-course lessons moved from 55.5% to 48.9%. Short lessons stayed near 25%. Home sections were unchanged from round 4: hero 13.4%, join 14.1%, featured 31.8%, shorts 43.7%, closing 13.9%, footer 3.8%.
+
+The shorts section stays high because the comparison fetch often does not paint the live card photographs, so a filled replica card is scored against a blank live card. The olive chips, four-up row, arrows and dots are in place.
+
+### Round 6
+
+The home shorts row was reordered to the live listing (crema, dirty, one side, watery, slow, fast). A further full 82-page pass was not run for that reorder alone. Priority sections after rounds 4 and 5:
+
+| Page / section | 1440 diff |
+| --- | --- |
+| Home hero | 13.4% |
+| Home join | 14.1% |
+| Home featured | 31.8% |
+| Home shorts | 43.7% |
+| Home closing | 13.9% |
+| Home footer | 3.8% |
+| Course card | 29.4% |
+| Video player band | 47.1% |
+| Video category band | 24.1% |
+
+What remains:
+
+- Featured cards and the home shorts row. Chip type matches (navy/beige, 2° and −3°, 15px 30px). The leftover is photograph grading and, for shorts, images the comparison host does not return.
+- Video player chrome. The still is a capture of the live player, but the column widths beside the cream text panel are not identical, so the band is still about 47%.
+- Team-course lessons, about 49%. The pink band and navy hero are in. The live page has more one-off blocks around the trainers.
+- The open mega menu is a white panel under the pill (olive heading, aqua links, chevron on the pill). It is not the full Elementor content width with every icon.
+- Challenge decorations. `post-3671.css` still 404s.
+- Cookiebot is not embedded.
+
 ## Checks
 
-`pnpm typecheck` and `pnpm lint` are run on each round. `pnpm build` is run before the last push.
+`pnpm typecheck` passes. `pnpm lint` still warns on the existing Typekit link. `pnpm build` is run before the last push.

@@ -7,7 +7,7 @@ export type TeamCourseDoc = (typeof courses)[number];
 export function TeamCourse({ course, trainers }: { course: TeamCourseDoc; trainers: Trainer[] }) {
   return (
     <article>
-      <header className="pattern-overlay pattern-slash pattern-slash--training train-hero">
+      <header className="team-course-hero">
         <div className="wrap">
           <p className="chip chip--sm chip--olive chip--cream rot--2">In Person Training</p>
           <h1 className="mid">{course.title}</h1>
@@ -15,7 +15,7 @@ export function TeamCourse({ course, trainers }: { course: TeamCourseDoc; traine
         </div>
       </header>
       <div className="section-pad wrap">
-        <section>
+        <section className="team-course-band">
           <h2 className="mid">Course Information</h2>
           <p>{course.intro}</p>
           <p>{course.body}</p>

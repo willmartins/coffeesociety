@@ -57,6 +57,15 @@ a { color: inherit; }
   line-height: 1;
 }
 
+.menu-item > button::after {
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  border: 4px solid transparent;
+  border-top-color: currentColor;
+  transform: translateY(2px);
+}
+
 .menu-item > button:hover,
 .menu-item > button:focus-visible { color: #1c3567; }
 
@@ -764,7 +773,7 @@ img.coffee-treated {
   font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #051521;
+  color: #004272;
 }
 
 .cups-band {
@@ -932,6 +941,8 @@ img.coffee-treated {
   color: #051521;
 }
 
+.video-copy h1 { color: #00a6c2; }
+
 .player {
   aspect-ratio: 16 / 9;
   background: #051521 center / cover no-repeat;
@@ -956,12 +967,11 @@ img.coffee-treated {
 }
 
 .video-player-wrap {
-  flex: 1;
+  flex: 1.15;
   background: transparent;
-  border-radius: 50px;
-  margin-top: 20px;
-  margin-bottom: -30px;
-  padding: 45px;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
 }
 
 .video-more {
@@ -1102,6 +1112,24 @@ img.coffee-treated {
   letter-spacing: -2.8px;
   margin: 12px 0;
 }
+.team-course-hero {
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  background: #1c3567 url("/assets/patterns/spoons-pattern.svg") center / cover no-repeat;
+  color: #efe9dc;
+  padding: 140px 0 60px;
+}
+
+.team-course-hero h1 { color: #efe9dc; }
+
+.team-course-band {
+  background: #ffa7b2;
+  border-radius: 8px;
+  padding: 60px;
+  color: #051521;
+}
+
 .train-hero {
   min-height: 70vh;
   display: flex;

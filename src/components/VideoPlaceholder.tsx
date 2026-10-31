@@ -14,7 +14,7 @@ export function VideoPlaceholder({
       aria-label={label}
       style={imageUrl ? { backgroundImage: `url(${imageUrl})` } : undefined}
     >
-      <span aria-hidden="true" />
+      {imageUrl ? null : <span aria-hidden="true" />}
     </div>
   );
 }

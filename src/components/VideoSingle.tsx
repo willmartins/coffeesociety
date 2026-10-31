@@ -5,12 +5,15 @@ export function VideoSingle({ video }: { video: VideoDoc }) {
   return (
     <article className="video-page">
       <div className="video-top">
+        <div className="video-player-wrap">
+          <VideoPlaceholder
+            label={`${video.title} video`}
+            imageUrl={`/assets/placeholders/video-${video.slug}.jpg`}
+          />
+        </div>
         <div className="video-copy">
           <h1>{video.title}</h1>
           <p>{video.excerpt}</p>
-        </div>
-        <div className="video-player-wrap">
-          <VideoPlaceholder label={`${video.title} video`} imageUrl={video.imageUrl} />
         </div>
       </div>
       <section className="video-more">
