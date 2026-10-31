@@ -8,7 +8,7 @@ export function FeaturedCollections({
   const chips = ["chip chip--lg chip--navy chip--hot rot-2", "chip chip--lg chip--beige chip--hot rot--3"];
   return (
     <section className="pattern-overlay pattern-spoonbackground featured">
-      <div className="wrap">
+      <div className="featured-inner">
         <h2 className="display">
           {title.includes(" ") ? (
             <>

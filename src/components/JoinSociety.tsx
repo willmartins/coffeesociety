@@ -13,8 +13,10 @@ export function JoinSociety({
 }) {
   return (
     <section className="join">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={imageUrl} alt="" className="join-photo coffee-treated" width={1024} height={548} />
+      <div className="join-photo-wrap">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={imageUrl} alt="" className="join-photo coffee-treated" width={1024} height={548} />
+      </div>
       <div className="join-copy">
         <h2 className="display">{title}</h2>
         <p className="lede">{body}</p>

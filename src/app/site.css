@@ -318,9 +318,11 @@ a { color: inherit; }
 .hero-row {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
   width: 100%;
   margin-bottom: -93px;
+  padding: 0 10px 0 20px;
+  box-sizing: border-box;
+  gap: 20px;
   position: relative;
   z-index: 2;
 }
@@ -330,17 +332,26 @@ a { color: inherit; }
   line-height: 0.75em;
   letter-spacing: -9px;
   color: #fd26dc;
+  flex: 1 1 690px;
   max-width: 690px;
+  min-width: 0;
   z-index: 1;
 }
 
 .hero-badge {
-  width: 356px;
-  height: auto;
-  transform: rotate(-7deg);
+  flex: 1 1 423px;
+  max-width: 423px;
+  min-width: 0;
   padding-left: 67px;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  transform: rotate(-7deg);
   z-index: 1;
+}
+
+.hero-badge img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .join {
@@ -355,19 +366,31 @@ a { color: inherit; }
   padding: 100px 0 0;
 }
 
-.join-copy { max-width: 700px; }
+.join-photo-wrap,
+.join-copy {
+  flex: 1 1 0;
+  max-width: 700px;
+  min-width: 0;
+}
+
+.join-photo-wrap {
+  transform: rotate(-4deg);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .join h2 { color: #efe9dc; }
 .join .lede { color: #efe9dc; }
 
 .join-photo {
   width: 100%;
-  max-width: 700px;
   height: 392px;
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   border: 10px solid #627c2f;
   border-radius: 180px;
-  transform: rotate(-4deg);
+  box-sizing: border-box;
+  display: block;
   filter: contrast(1.3) saturate(1.3) sepia(0.18) hue-rotate(-8deg) brightness(1.05);
 }
 
@@ -405,7 +428,8 @@ img.coffee-treated {
   box-sizing: border-box;
 }
 
-.featured h2 { color: #1c3567; width: 100%; }
+.featured-inner { width: 100%; padding: 0 34px; box-sizing: border-box; }
+.featured h2 { color: #1c3567; width: 100%; margin-bottom: 30px; }
 
 .feature-grid {
   display: flex;
@@ -421,7 +445,9 @@ img.coffee-treated {
   flex-direction: column;
   justify-content: flex-end;
   min-height: 360px;
-  width: 49%;
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
   padding: 56px;
   background-size: cover;
   background-position: center;
@@ -1120,6 +1146,7 @@ img.coffee-treated {
 
 @media (min-width: 1025px) {
   .featured { min-height: 712px; }
+  .hero-row { margin-bottom: -103px; }
   .shorts-band { min-height: 921px; }
   .closing-banner { min-height: 795px; }
   .site-footer { height: 208px; box-sizing: border-box; overflow: hidden; padding: 12px 0 8px; }
@@ -1143,8 +1170,8 @@ img.coffee-treated {
   .hero h1 { font-size: 168px; letter-spacing: -4px; }
   .join { padding: 80px 20px 60px; }
   .join-photo { height: 500px; }
-  .featured { padding: 40px 20px 80px; }
-  .feature-card { width: 48%; padding: 24px; }
+  .featured { padding: 40px 0 80px; }
+  .feature-card { padding: 24px; }
   .shorts-band h2 { padding: 0 20px; }
   .shorts-grid > li { flex-basis: calc(33.33% - 8px); }
   .closing-banner h2 { font-size: 175px; line-height: 0.8em; }
@@ -1179,9 +1206,10 @@ img.coffee-treated {
     justify-content: center;
     align-items: flex-end;
   }
-  .hero-row { justify-content: center; margin-bottom: -41px; flex-wrap: wrap; }
-  .hero h1 { font-size: 68px; letter-spacing: -1.5px; }
-  .hero-badge { width: 402px; padding-left: 0; }
+  .hero-row { margin-bottom: -41px; padding-left: 10px; }
+  .hero h1 { font-size: 68px; letter-spacing: -1.5px; max-width: none; }
+  .hero h1 { flex-basis: 340px; }
+  .hero-badge { padding-left: 0; flex-basis: 200px; max-width: none; }
   .join {
     min-height: 600px;
     flex-direction: column;
@@ -1190,7 +1218,7 @@ img.coffee-treated {
   }
   .join-photo { height: 175px; object-position: top center; border-width: 7px; }
   .featured { padding: 40px 16px 80px; }
-  .feature-card { width: 100%; }
+  .feature-card { flex-basis: 100%; }
   .shorts-band { padding: 70px 0 30px; }
   .shorts-band h2 { padding: 0 16px; }
   .card-grid--2, .card-grid--3, .card-grid--4, .trainer-grid, .team-grid {

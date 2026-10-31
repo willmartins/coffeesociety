@@ -115,6 +115,29 @@ What still differs, and why:
 - Cookiebot is not embedded.
 - `post-3671.css` for the challenge page still 404s on the live host.
 
+### Round 4
+
+Same 82 pages, now waiting for `document.fonts.ready` and images, with animation off and the cookie banner hidden. Full-page means barely moved, because most pages were not part of this pass. Section boxes on the home page tell the real story at 1440px:
+
+| Section | Diff |
+| --- | --- |
+| Hero | 13.4% |
+| Join | 14.1% |
+| Featured | 31.8% |
+| Shorts | 43.7% |
+| Closing | 13.9% |
+| Footer | 3.8% |
+| Full page | 49.2% |
+
+The hero badge, heading and featured card now share the live page’s measured boxes at 1440px (badge 772×405, card 34,1632 676×360). At 390px the badge is 147×168 against the live 146×167.
+
+| Width | Round 3 full page | Round 4 full page |
+| --- | --- | --- |
+| 1440 | 45.92% | 45.77% |
+| 1024 | 54.57% | 54.61% |
+| 768 | 53.04% | 53.04% |
+| 390 | 57.95% | 57.98% |
+
 ## Checks
 
 `pnpm typecheck` and `pnpm lint` are run on each round. `pnpm build` is run before the last push.
