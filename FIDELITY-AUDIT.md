@@ -75,7 +75,45 @@ What differed, from the side-by-side images and the live DOM:
 
 Fixed in this round: those header pills, the short-lesson row, the shorts slider, the stamp, the training-archive top, thumbnail-filled players, the seven `/lavazza-team/courses/` lessons with copy taken from the live pages, and `/video/page/3/`.
 
-After percentages are the round 2 capture.
+### Round 2
+
+Full capture after round 1, all 82 pages at 1440, 1024, 768 and 390. One page errored.
+
+| Width | Mean diff |
+| --- | --- |
+| 1440 | 53.27% |
+| 1024 | 56.82% |
+| 768 | 58.11% |
+| 390 | 61.09% |
+
+Short lessons fell from about 76% to 18–28%. Training archive fell from 72% to 61%. Home rose from 36% to 50% because the closing stamp and the shorts slider shifted the lower half of the page. Video lessons rose to about 68%: the page was the wrong height, so every row below the title was compared with the wrong band.
+
+### Round 3
+
+Section boxes were measured with `getBoundingClientRect` on the live DOM and copied onto the replica:
+
+- Home featured 712px, shorts 921px, closing 795px, footer 208px. Those four now start at the same scroll positions as the live page (1370, 2082, 3003, 3798).
+- A video lesson’s top band is 617px from y=145, and the category band under it is 506px. The replica uses the lesson thumbnail inside that player frame.
+- Archives without a title (training, team courses) open with a 720px badge band and a 540px navy band, which is what `/training/` measures.
+
+Full capture of all 82 pages, no errors:
+
+| Width | Round 1 mean | Round 2 mean | Round 3 mean |
+| --- | --- | --- | --- |
+| 1440 | 51.49% | 53.27% | 45.92% |
+| 1024 | 60.50% | 56.82% | 54.57% |
+| 768 | 51.77% (18 pages) | 58.11% | 53.04% |
+| 390 | not captured | 61.09% | 57.95% |
+
+At 1440px, short lessons are about 17–31% (from 76%). Video lessons average 47% (from 68% in round 2). The training archive is 34% (from 72% in round 1). Home is 50%: the bands now start at the same scroll positions as the live page, and the remaining red is photo crop, chip position and font edges. Customer portal was 72% because the live form sits on the right (x=860, width 520); that card is now right-aligned. Challenge page and team-course lessons stay around 55–62% where the live page has one-off decoration this pass does not rebuild shape for shape.
+
+What still differs, and why:
+
+- Home and course heroes: the photograph crop and the exact place of the title chip inside each card. The section boxes match; the pixels inside them do not.
+- Video player: the live frame is a Presto/Vimeo player with an empty poster attribute. The replica uses that lesson’s live thumbnail at 16:9 in the same box. It is not a screenshot of the Vimeo chrome.
+- Mega menu: closed state is white pills, which matches the measured menu title. The open Elementor panel (icons, hover lift) is a dropdown.
+- Cookiebot is not embedded.
+- `post-3671.css` for the challenge page still 404s on the live host.
 
 ## Checks
 

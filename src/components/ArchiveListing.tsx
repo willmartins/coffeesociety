@@ -37,13 +37,11 @@ export function ArchiveListing({
           <img src={oliveBadge} alt="" />
         </header>
       )}
-      {description ? (
-        <section className="intro-band">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={pinkCup} alt="" />
-          <p>{description}</p>
-        </section>
-      ) : null}
+      <section className="intro-band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={pinkCup} alt="" />
+        {description ? <p>{description}</p> : null}
+      </section>
       {videoEmpties > 0 || (videos && videos.length > 0) ? (
         <section className="pink-band">
           <div className="wrap">

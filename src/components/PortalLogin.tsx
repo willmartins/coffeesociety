@@ -30,7 +30,7 @@ export function PortalLogin({
 
   return (
     <section className="login-band">
-      <div className="wrap">
+      <div className="login-card">
         <h1>{title}</h1>
         <p className="lede">{intro}</p>
         <form className="portal-form" aria-label="Login form" onSubmit={onSubmit}>

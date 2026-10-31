@@ -402,6 +402,7 @@ img.coffee-treated {
   justify-content: space-between;
   gap: 20px;
   padding: 70px 0 80px;
+  box-sizing: border-box;
 }
 
 .featured h2 { color: #1c3567; width: 100%; }
@@ -439,7 +440,7 @@ img.coffee-treated {
 .feature-card--centre { align-items: center; }
 .feature-card--start { align-items: flex-start; }
 
-.shorts-band { padding: 70px 0 80px; }
+.shorts-band { padding: 70px 0 80px; box-sizing: border-box; }
 .shorts-band h2 { color: #1c3567; padding: 0; }
 
 .shorts-slider {
@@ -568,7 +569,7 @@ img.coffee-treated {
 }
 
 .closing-banner {
-  min-height: 720px;
+  min-height: 795px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -607,10 +608,11 @@ img.coffee-treated {
 }
 
 .archive-mark {
-  min-height: 42vh;
+  min-height: 720px;
   display: flex;
-  align-items: center;
-  padding: 80px 8vw 20px;
+  align-items: flex-end;
+  padding: 0 8vw 40px;
+  box-sizing: border-box;
 }
 
 .archive-mark img {
@@ -642,7 +644,7 @@ img.coffee-treated {
 .page-hero .hero-badge { width: 280px; }
 
 .intro-band {
-  min-height: 60vh;
+  min-height: 540px;
   display: flex;
   align-items: center;
   gap: 40px;
@@ -871,15 +873,17 @@ img.coffee-treated {
 
 .video-page {
   background: #00a6c2 url("/assets/patterns/spoonbackground.svg") center / contain no-repeat;
-  padding: 145px 30px 60px;
+  padding: 145px 0 0;
 }
 
 .video-top {
   display: flex;
   gap: 30px;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
-  padding: 30px;
+  min-height: 617px;
+  padding: 30px 60px;
+  box-sizing: border-box;
 }
 
 .video-copy,
@@ -935,10 +939,17 @@ img.coffee-treated {
 }
 
 .video-more {
-  margin-top: 24px;
-  min-height: 200px;
+  min-height: 506px;
+  box-sizing: border-box;
   background: #fff url("https://coffee-society.co.uk/wp-content/uploads/2025/09/Vintage-Sketch-Pad-scaled.jpg") center / contain repeat-y;
-  padding: 30px;
+  padding: 40px 8vw;
+}
+
+.video-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 16px;
 }
 
 .short-page {
@@ -966,13 +977,16 @@ img.coffee-treated {
 .empty { margin: 0 0 12px; color: #051521; }
 
 .login-band {
-  min-height: 70vh;
+  min-height: 815px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
+  align-items: center;
   background: #fff;
-  padding: 80px 30px;
+  padding: 80px 60px;
+  box-sizing: border-box;
 }
+
+.login-card { width: 520px; }
 
 .login-band h1 {
   font-family: "hoss-sharp", sans-serif;
@@ -1105,6 +1119,10 @@ img.coffee-treated {
 .wrap-wide { width: min(1600px, calc(100% - 32px)); margin: 0 auto; }
 
 @media (min-width: 1025px) {
+  .featured { min-height: 712px; }
+  .shorts-band { min-height: 921px; }
+  .closing-banner { min-height: 795px; }
+  .site-footer { height: 208px; box-sizing: border-box; overflow: hidden; padding: 12px 0 8px; }
   .logo { margin: -30px 0; }
   .logo img { width: 175px; height: 130px; }
   .menu { display: flex; }
@@ -1188,6 +1206,7 @@ img.coffee-treated {
   }
   .closing-banner h2 { font-size: 79px; line-height: 0.9em; letter-spacing: -2px; }
   .closing-banner p { font-size: 28px; }
+  .archive-mark { min-height: 55vh; align-items: center; }
   .page-hero { min-height: 55vh; justify-content: center; }
   .page-hero h1 { font-size: 55px; letter-spacing: -1.5px; }
   .page-hero .hero-badge { display: none; }
