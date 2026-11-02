@@ -25,7 +25,7 @@ export function FeaturedCollections({
             <a
               key={card.href}
               href={card.href}
-              className={`feature-card coffee-bg-treated ${index === 0 ? "feature-card--centre" : "feature-card--start"}`}
+              className="feature-card coffee-bg-treated feature-card--centre"
               style={{ backgroundImage: `url(${card.imageUrl})` }}
             >
               <span className={`${chips[index] ?? chips[0]} filter-avoid`}>{card.label}</span>

@@ -42,10 +42,9 @@ Videos stay empty. Copy is taken from the live pages. Design-audit “improvemen
 ## Not fully closed
 
 - **Cookie notice.** The live site loads Cookiebot. The replica keeps the notice copy from the seed and does not embed the Cookiebot script.
-- **Lavazza team courses** (`/lavazza-team/courses/` and the seven lesson URLs) use template `post-2122`. Those routes are not in this replica.
 - **Challenge page decorations.** `post-3671.css` returns 404, so the challenge page uses the shared article layout and the existing copy, not the missing stylesheet.
 - **Training single interior.** Outcomes, topics and links are present. The live page also stacks several one-off image bands that are not rebuilt one for one.
-- **Header mega menu.** Labels, colour, type and panel size match. The live menu is an Elementor mega menu with icon rows and a lift on hover. The replica uses a dropdown.
+- **Header mega menu.** The open panel is the full-width Elementor layer (1440×194) with the 400×175 white card. It does not add icon rows that are not in the live menu markup.
 - **Some trainer photographs** returned 403 to headless Chrome in this environment (`lavazzateam.jpg`). The URLs match the live page and respond 200 to a normal fetch.
 
 ## Round log
@@ -169,7 +168,7 @@ The home shorts row was reordered to the live listing (crema, dirty, one side, w
 | Video player band | 47.1% |
 | Video category band | 24.1% |
 
-What remains:
+What remains after round 6:
 
 - Featured cards and the home shorts row. Chip type matches (navy/beige, 2° and −3°, 15px 30px). The leftover is photograph grading and, for shorts, images the comparison host does not return.
 - Video player chrome. The still is a capture of the live player, but the column widths beside the cream text panel are not identical, so the band is still about 47%.
@@ -178,6 +177,75 @@ What remains:
 - Challenge decorations. `post-3671.css` still 404s.
 - Cookiebot is not embedded.
 
+### Round 7
+
+Same 82 pages, fonts ready, images waited, animation off, cookie banner hidden. Section diffs are scaled to 400px wide at pixelmatch threshold 0.2, same as the full page.
+
+| Width | Round 5 full page | Round 7 full page |
+| --- | --- | --- |
+| 1440 | 43.92% | 38.32% |
+| 1024 | 55.58% | 46.50% |
+| 768 | 53.71% | 48.02% |
+| 390 | 56.54% | 55.37% |
+
+Home sections at 1440px, before this round and after:
+
+| Section | Round 5 | Round 7 |
+| --- | --- | --- |
+| Hero | 13.4% | 13.37% |
+| Join | 14.1% | 14.10% |
+| Featured | 31.8% | 2.68% |
+| Shorts | 43.7% | 4.97% |
+| Closing | 13.9% | 40.14% |
+| Footer | 3.8% | 3.84% |
+| Open menu | not measured | 7.71% |
+
+Other priority sections at 1440px: course card 29.4% to 7.42%. Pouring & Latte Art player band 47.1% to 16.74% (category band stayed 24.13%). Team lesson hero 26.0%, pink band 20.82%, useful-links split 13.12%. The lesson page fell from about 49% to 29.8%, and the seven team lessons together average 28.8% (from 48.9%). Video lessons average 36.46% (from 43.0%).
+
+What changed: both featured chips are centred, with the live coffee filter, grain and a 10% dark overlay. Short cards are 310px with a 20px gap, resting on slow, fast, crema, dirty. The video row is 883px and 455px with 45px of cream padding. Course cards are 550×423 with the photograph anchored to the bottom. Team lessons gained the cream and navy useful-links panel and the Contact button from the live template. The open menu is a 1440×194 layer with the 400×175 white card at x=371.
+
+The closing band rose to 40% because the stamp was still a side image while the live stamp is a centred background. That is corrected after this capture and scored in the next round.
+
+### Round 8
+
+The closing stamp is now the live centred background, the shorts band is 883px so the closing and footer start on the live scroll positions, and the card rows use the live width at each breakpoint (310px at 1440, three-up at 1024 and 768, full width at 390). Featured cards land on the measured boxes at every width.
+
+| Width | Round 7 full page | Round 8 full page | Home full page |
+| --- | --- | --- | --- |
+| 1440 | 38.32% | 38.99% | 22.00% (was 43.34%) |
+| 1024 | 46.50% | 47.60% | 25.38% (was 52.56%) |
+| 768 | 48.02% | 49.88% | 32.34% (was 53.20%) |
+| 390 | 55.37% | 55.10% | 40.50% (was 58.74%) |
+
+Home sections at 1440px: hero 13.37%, join 14.10%, featured 2.68%, shorts 6.26%, closing 42.23%, footer 3.84%, open menu 7.71%. Featured at 1024 fell from 34.54% to 3.45%, and at 390 from 13.81% to 2.38%. The player band on Pouring & Latte Art is 15.76% at 1440 and 21.35% at 1024 (was 55.68% before the columns stacked the way the live lesson does).
+
+The site-wide mean barely moved because the stamp was still fully opaque. The live stamp is a 50% overlay blend. Shorts at 1024, 768 and 390 stayed near 40% because the resting slide is not the desktop window: tablet opens on the fast shot, and 390 opens on crema.
+
+### Round 9
+
+The stamp uses the live 50% overlay blend. Below 1025px the shorts row opens on the live resting slide (the fast shot at 1024 and 768, crema at 390). One page timed out at 390px (`/topic/coffee-duos/`).
+
+| Width | Round 8 full page | Round 9 full page | Home |
+| --- | --- | --- | --- |
+| 1440 | 38.99% | 39.11% | 22.00% |
+| 1024 | 47.60% | 47.80% | 25.71% |
+| 768 | 49.88% | 49.64% | 32.60% |
+| 390 | 55.10% | 55.00% (81 pages) | 39.90% |
+
+Home sections at 1440px: hero 13.37%, join 14.10%, featured 6.85%, shorts 6.26%, closing 42.31%, footer 3.84%, open menu 7.71%. The player band is 16.74%. Course cards are 7.42% (SCA) and 6.18% (Lavazza). Team lesson hero 26.0%, pink band 20.82%, useful-links panel 13.12%.
+
+The closing section stayed near 42% because the headline column was the full content width, so “Bringing coffee people together” sat on one line. The live column is 858px from x=20, and the line wraps. After round 9 that column was set to 858px with the heading 169px from the top of the band. A home-only reshoot, same method, put the closing section at 2.89% (from 42.31%) and the home page at 21.32% (from 22.00%).
+
+## What remains
+
+- Hero and join photographs. The boxes match. The leftover is about 13% to 14% and is mostly the photograph edges and the display type.
+- Shorts below 1440px stay near 40%. The card widths and the resting titles match. The comparison browser often does not paint the live card photographs, so a filled card is scored against a blank one.
+- Course cards below 1440px (about 35% to 43%). At 1440px they are about 6% to 7%.
+- Team lesson hero below 1440px (about 50% to 57%). The desktop hero, pink band and split links panel are in.
+- Video category band, about 24% at 1440px. The player column is 16.74% with the live still in the 883×527 frame.
+- Challenge decorations. `post-3671.css` still 404s.
+- Cookiebot is not embedded.
+
 ## Checks
 
-`pnpm typecheck` passes. `pnpm lint` still warns on the existing Typekit link. `pnpm build` is run before the last push.
+`pnpm typecheck` passes. `pnpm lint` still warns on the existing Typekit link. `pnpm build` passes (89 pages).

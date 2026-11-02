@@ -27,16 +27,18 @@ export function SiteHeader({
               {item.label}
             </button>
             <div className="dropdown">
-              {item.groups.map((group) => (
-                <div key={group.label}>
-                  <h2>{group.label}</h2>
-                  {group.links.map((link) => (
-                    <a key={link.href + link.label} href={link.href}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              ))}
+              <div className="dropdown-card">
+                {item.groups.map((group) => (
+                  <div key={group.label}>
+                    <h2>{group.label}</h2>
+                    {group.links.map((link) => (
+                      <a key={link.href + link.label} href={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
