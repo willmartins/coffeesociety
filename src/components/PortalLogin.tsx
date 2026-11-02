@@ -29,22 +29,26 @@ export function PortalLogin({
   }
 
   return (
-    <section className="mx-auto max-w-[720px] px-5 py-28">
-      <h1 className="font-[hoss-sharp,sans-serif] text-[40px] uppercase">{title}</h1>
-      <p>{intro}</p>
-      <form className="portal-form" aria-label="Login form" onSubmit={onSubmit}>
-        <input type="hidden" name="redirect_to" value={redirectTo} />
-        <label htmlFor="user">
-          Username
-          <input id="user" name="log" type="text" required autoComplete="username" />
-        </label>
-        <label htmlFor="password">
-          Password
-          <input id="password" name="pwd" type="password" required autoComplete="current-password" />
-        </label>
-        <button type="submit">Log In</button>
-        {message ? <p role="status">{message}</p> : null}
-      </form>
+    <section className="login-band">
+      <div className="login-card">
+        <h1>{title}</h1>
+        <p className="lede">{intro}</p>
+        <form className="portal-form" aria-label="Login form" onSubmit={onSubmit}>
+          <input type="hidden" name="redirect_to" value={redirectTo} />
+          <label htmlFor="user">
+            Username
+            <input id="user" name="log" type="text" required autoComplete="username" />
+          </label>
+          <label htmlFor="password">
+            Password
+            <input id="password" name="pwd" type="password" required autoComplete="current-password" />
+          </label>
+          <button className="pill pill--square" type="submit">
+            Log In
+          </button>
+          {message ? <p role="status">{message}</p> : null}
+        </form>
+      </div>
     </section>
   );
 }

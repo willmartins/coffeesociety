@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { CourseTypeListing } from "@/components/CourseTypeListing";
 import { pageMeta } from "@/lib/meta";
-import { getCourses, getCourseTypes, getTrainers } from "@/sanity/load";
+import { getCourses, getCourseTypes, getSettings, getTrainers } from "@/sanity/load";
 
 export async function generateStaticParams() {
   const types = await getCourseTypes();
@@ -25,10 +25,11 @@ export default async function CourseTypePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const [types, courses, trainers] = await Promise.all([
+  const [types, courses, trainers, settings] = await Promise.all([
     getCourseTypes(),
     getCourses(),
     getTrainers(),
+    getSettings(),
   ]);
   const type = types.find((item) => item.slug === slug);
   if (!type) notFound();
@@ -38,7 +39,7 @@ export default async function CourseTypePage({
   });
   return (
     <main>
-      <CourseTypeListing courseType={{ ...type, cards }} trainers={trainers} />
+      <CourseTypeListing courseType={{ ...type, cards }} trainers={trainers} badgeUrl={settings.badgeUrl} />
     </main>
   );
 }

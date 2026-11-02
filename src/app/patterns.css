@@ -17,12 +17,15 @@
 
 /* spoons-pattern.svg: full-bleed spoon tile over the page cream. */
 .site-shell {
-  background-color: var(--cs-cream);
-  background-image: url("/assets/patterns/spoons-pattern.svg");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
+  background-color: #efe9dc;
+  background-image: url("https://coffee-society.co.uk/wp-content/uploads/2025/09/Vintage-Sketch-Pad-scaled.jpg");
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-size: contain;
   min-height: 100vh;
+  color: #051521;
+  font-size: 16px;
+  line-height: 1.2;
 }
 
 /* Shared overlay box. Elementor paints the graphic on ::before. */

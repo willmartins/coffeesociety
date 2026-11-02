@@ -1,43 +1,64 @@
 import type { Trainer } from "@/content/types";
+import { courseCardImages, oliveBadge, pinkCup } from "@/content/live-media";
 import { Trainers } from "./Trainers";
 
-type Card = { title: string; blurb: string; href?: string };
+type Card = { title: string; blurb: string; href?: string; imageUrl?: string };
 
 export function CourseTypeListing({
   courseType,
   trainers,
+  badgeUrl,
 }: {
   courseType: { title: string; description: string; cards: Card[] };
   trainers: Trainer[];
+  badgeUrl: string;
 }) {
   return (
     <div>
-      <header className="pattern-overlay pattern-slash flex min-h-[55vh] items-end px-6 pb-12 xl:min-h-[80vh]">
-        <div className="mx-auto w-full max-w-[1600px] text-white">
-          <h1 className="m-0 font-[hoss-sharp,sans-serif] text-[40px] font-bold uppercase leading-[0.9] md:text-[63px] xl:text-[90px]">
-            {courseType.title}
-          </h1>
-          <p className="max-w-[70ch]">{courseType.description}</p>
+      <header className="pattern-overlay pattern-slash page-hero">
+        <div className="page-hero-row wrap-wide">
+          <h1>{courseType.title}</h1>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={badgeUrl} alt="" className="hero-badge" />
         </div>
       </header>
-      <section className="pattern-overlay pattern-cups px-5 py-16 text-white">
-        <div className="card-grid mx-auto max-w-[1600px]">
-          {courseType.cards.map((card) => (
-            <article key={card.title} className="bg-white/10 p-6">
-              <h2 className="m-0 font-[hoss-sharp,sans-serif] text-[28px] font-bold uppercase leading-[0.9]">
-                {card.title}
-              </h2>
-              <p>{card.blurb}</p>
-              {card.href ? (
-                <a className="pill" href={card.href}>
-                  Learn more
-                </a>
-              ) : null}
-            </article>
-          ))}
+      <section className="intro-band">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={pinkCup} alt="" />
+        <p>{courseType.description}</p>
+      </section>
+      <section className="pattern-overlay pattern-cups cups-band">
+        <div className="card-grid card-grid--2 wrap-wide">
+          {courseType.cards.map((card) => {
+            const image = card.imageUrl || courseCardImages[card.title];
+            const inner = (
+              <>
+                {image ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={image} alt="" className="coffee-treated" />
+                ) : null}
+                <div>
+                  <h2 className="chip chip--sm chip--aqua chip--white rot--1">{card.title}</h2>
+                  <p>{card.blurb}</p>
+                  <p className="learn-more">Learn more</p>
+                </div>
+              </>
+            );
+            return card.href ? (
+              <a key={card.title} className="course-card niz-bounce" href={card.href}>
+                {inner}
+              </a>
+            ) : (
+              <article key={card.title} className="course-card">
+                {inner}
+              </article>
+            );
+          })}
         </div>
       </section>
       <Trainers trainers={trainers} />
     </div>
   );
 }
+
+export const archiveBadge = oliveBadge;

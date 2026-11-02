@@ -33,8 +33,8 @@ export default async function TeamTrackPage({
       <ArchiveListing
         title={track.title}
         description={track.description}
-        emptyVideos
-        emptyCourses
+        videoEmpties={2}
+        courseEmpties={2}
         trainers={trainers}
       />
     </main>

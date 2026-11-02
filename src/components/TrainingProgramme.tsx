@@ -11,33 +11,33 @@ export function TrainingProgramme({
 }) {
   return (
     <article>
-      <header className="pattern-overlay pattern-slash pattern-slash--training px-5 py-28 text-white">
-        <div className="mx-auto max-w-[1100px]">
-          <h1 className="m-0 font-[hoss-sharp,sans-serif] text-[40px] font-bold uppercase leading-[0.9] md:text-[60px]">
-            {course.title}
-          </h1>
+      <header className="pattern-overlay pattern-slash pattern-slash--training train-hero">
+        <div className="wrap">
+          <h1 className="mid">{course.title}</h1>
           {course.duration ? <p>Course Duration: {course.duration}</p> : null}
           {course.enquireHref ? (
-            <a className="pill" href={course.enquireHref}>
+            <a className="pill pill--round pill--pink" href={course.enquireHref}>
               ENQUIRE NOW
             </a>
           ) : null}
         </div>
       </header>
-      <div className="mx-auto grid max-w-[1100px] gap-8 px-5 py-12">
+      <div className="section-pad wrap">
         {course.imageUrl ? (
-          <MediaFrame src={course.imageUrl} alt="" width={1024} height={700} />
+          <div className="train-photo">
+            <MediaFrame src={course.imageUrl} alt="" width={1024} height={700} />
+          </div>
         ) : null}
         <section>
-          <h2>Course Information</h2>
+          <h2 className="mid">Course Information</h2>
           <p>{course.summary}</p>
         </section>
         <section>
-          <h2>Course Outcomes</h2>
+          <h2 className="mid">Course Outcomes</h2>
           <p>{course.outcomes}</p>
         </section>
         <section>
-          <h2>Key Topics</h2>
+          <h2 className="mid">Key Topics</h2>
           <ol>
             {course.keyTopics.map((topic) => (
               <li key={topic}>{topic}</li>
@@ -45,7 +45,7 @@ export function TrainingProgramme({
           </ol>
         </section>
         <section>
-          <h2>Useful Links</h2>
+          <h2 className="mid">Useful Links</h2>
           {course.newsletterHref ? (
             <p>
               <a href={course.newsletterHref}>Sign up to the Coffee Society Newsletter</a>
@@ -59,7 +59,7 @@ export function TrainingProgramme({
           </p>
         </section>
         <section>
-          <h2>Enquire Now</h2>
+          <h2 className="mid">Enquire Now</h2>
           <p>Want to learn more about Lavazza training and education? Contact our training team.</p>
           {course.enquireHref ? (
             <a className="pill" href={course.enquireHref}>

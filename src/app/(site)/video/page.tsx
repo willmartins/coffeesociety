@@ -15,8 +15,8 @@ export default async function VideoArchivePage() {
       <ArchiveListing
         title={blue?.title}
         description={blue?.description}
-        emptyVideos
-        emptyCourses
+        videoEmpties={2}
+        courseEmpties={2}
         trainers={trainers}
       />
     </main>

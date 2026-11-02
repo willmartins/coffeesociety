@@ -3,26 +3,31 @@ import { VideoPlaceholder } from "./VideoPlaceholder";
 
 export function VideoSingle({ video }: { video: VideoDoc }) {
   return (
-    <article className="mx-auto grid max-w-[1100px] gap-6 px-5 py-28">
-      <VideoPlaceholder label={`${video.title} video`} />
-      <h1 className="m-0 font-[hoss-sharp,sans-serif] text-[36px] font-bold uppercase leading-[0.95] md:text-[52px]">
-        {video.title}
-      </h1>
-      <p>{video.excerpt}</p>
-      {video.categoryTitle ? (
-        <section>
-          <h2>{video.categoryTitle}</h2>
-          <p>{video.categoryDescription}</p>
-        </section>
-      ) : null}
-      <nav className="flex justify-between gap-4" aria-label="More videos">
-        {video.previousSlug ? (
-          <a href={`/video/${video.previousSlug}/`}>Previous {video.previousTitle}</a>
-        ) : (
-          <span />
-        )}
-        {video.nextSlug ? <a href={`/video/${video.nextSlug}/`}>Next {video.nextTitle}</a> : null}
-      </nav>
+    <article className="video-page">
+      <div className="video-top">
+        <div className="video-player-wrap">
+          <VideoPlaceholder
+            label={`${video.title} video`}
+            imageUrl={`/assets/placeholders/video-${video.slug}.jpg`}
+          />
+        </div>
+        <div className="video-copy">
+          <h1>{video.title}</h1>
+          <p>{video.excerpt}</p>
+        </div>
+      </div>
+      <section className="video-more">
+        {video.categoryTitle ? <h2 className="mid">{video.categoryTitle}</h2> : null}
+        {video.categoryDescription ? <p>{video.categoryDescription}</p> : null}
+        <div className="video-links">
+          {video.previousSlug ? (
+            <a href={`/video/${video.previousSlug}/`}>{video.previousTitle}</a>
+          ) : (
+            <span />
+          )}
+          {video.nextSlug ? <a href={`/video/${video.nextSlug}/`}>{video.nextTitle}</a> : null}
+        </div>
+      </section>
     </article>
   );
 }

@@ -27,16 +27,18 @@ export function SiteHeader({
               {item.label}
             </button>
             <div className="dropdown">
-              {item.groups.map((group) => (
-                <div key={group.label}>
-                  <h2>{group.label}</h2>
-                  {group.links.map((link) => (
-                    <a key={link.href + link.label} href={link.href}>
-                      {link.label}
-                    </a>
-                  ))}
-                </div>
-              ))}
+              <div className="dropdown-card">
+                {item.groups.map((group) => (
+                  <div key={group.label}>
+                    <h2>{group.label}</h2>
+                    {group.links.map((link) => (
+                      <a key={link.href + link.label} href={link.href}>
+                        {link.label}
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ))}
@@ -51,7 +53,10 @@ export function SiteHeader({
         aria-controls="mobile-menu"
         onClick={() => setOpen((value) => !value)}
       >
-        Menu
+        <span />
+        <span />
+        <span />
+        <span className="visually-hidden">Menu</span>
       </button>
       <div id="mobile-menu" className={open ? "mobile-panel open" : "mobile-panel"}>
         {items.map((item) => (
